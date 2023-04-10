@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Etch-A-Sketch</title>
+</head>
+<body>
+<div class="header"><div class="title"></div></div>   
+<div class="main">
+    <div class="game-board" id="GameBoard"></div>
+    <div class="gamecontrols">
+        <input type="color" name="color" id="Color"></div>
+        <input type="range" name="range" id="GridCount" min="4" max="64">
+        <div id="gridcounttext"></div>
+        <button id="clear">clear</button>
+        <button id="gridborder" onclick=togglegrid()>toggle grid boreders </button>
+
+        <input type="checkbox" name="random color" id="RandomColor">
+        <span class="slider round"></span>
+    </div> 
+<div class="footer"> created by m.j </div>
+
+</body>
+</html>
