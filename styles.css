@@ -2,11 +2,19 @@
     --defaultcolor:black
   }
 
-
+body{
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+   
+    flex-direction: column;
+}
 .game-board{
-    width: 400px;
-    height: 400px;
-    background-color: rgba(0, 0, 0 , 0.2);
+    width: 600px;
+    height: 600px;
+    background-color: #acacac;
     display: grid;
     
 
@@ -24,4 +32,18 @@
     border-bottom: transparent;
     border-right: transparent;
     border-left: transparent;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.gamecontrols{
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+.foote{
+    margin-top: auto;
 }

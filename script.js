@@ -9,7 +9,7 @@ window.onload=()=>{
     changeinputtext()
     changegridsize()
     addblocks() 
-    togglepenq()
+    togglepen()
 }
 
 
@@ -25,7 +25,8 @@ changeinputtext()
 cleargridsanddivs()
 changegridsize()
 addblocks()
-togglepenq()
+changecolor()
+togglepen()
 }
 
 
@@ -76,34 +77,15 @@ var mouseenter=false
 let penstatus=0
 var smallGrids = document.querySelectorAll("#smallgrid");
 
-function togglepen(){
-    smallGrids = document.querySelectorAll("#smallgrid");
-    for (var i = 0; i < smallGrids.length; i++) {
-        smallGrids[i].onclick = function() {
-            if(penstatus==0){
-                for(var j = 0; j < smallGrids.length; j++){
-                smallGrids[j].onmouseenter = function() {
-                    this.classList.add("red")
-                    penstatus=1
-                }}
-            }
-            else{
-                for(var z = 0; z < smallGrids.length; z++){
-                    smallGrids[z].onmouseenter = function() {
-                        penstatus=0
-                    }
-                }
-            }
 
-}}}
-function togglepenq(){
+function togglepen(){
     smallGrids = document.querySelectorAll("#smallgrid");
 
     gridcontainer.onclick= function() {
         if(penstatus==0){
             for(var j = 0; j < smallGrids.length; j++){
             smallGrids[j].onmouseenter = function() {
-                this.classList.add("red")
+                this.style.backgroundColor=`${currentcolor}`
                 penstatus=1
             }}
         }
@@ -137,18 +119,45 @@ const clearbutton=document.getElementById("clear");
 clearbutton.onclick = cleargrid
 function cleargrid(){
     for (var i = 0; i < smallGrids.length; i++) {
-        smallGrids[i].classList.remove("red")
-        gridstatus=1
+        smallGrids[i].style.backgroundColor=`#acacac`;
     }}
 
 
-
+let currentcolor = 'black';
 const colorpicker=document.getElementById("Color")
-colorpicker.addEventListener('input',changecolor)
+colorpicker.addEventListener('input',changecolor);
+
+
 function changecolor(){
     let inputcolor=document.getElementById("Color").value
-    document.documentElement.style.setProperty('--defaultcolor', `${inputcolor}`);
+    currentcolor=inputcolor
 }
+
+    /*const randomcolorbutton=document.getElementById("RandomColor");
+    randomcolorbutton.addEventListener('change', function() {
+        if(this.checked){
+            gridcontainer.addEventListener("mousemove", (event) => {
+                let r = Math.random() * 256;
+                    let g = Math.random() * 256;
+                    let b = Math.random() * 256;
+                    currentcolor= `rgb(${r}, ${g}, ${b})`
+            });}
+           else{
+            alert("2")
+            gridcontainer.removeEventListener("mousemove", (event) => {
+                let r = Math.random() * 256;
+                    let g = Math.random() * 256;
+                    let b = Math.random() * 256;
+                    currentcolor= `rgb(${r}, ${g}, ${b})`
+            });
+            changecolor();
+             }})*/
+        
+        
+
+
+    
+
 
 
 
