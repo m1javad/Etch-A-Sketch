@@ -9,7 +9,8 @@ window.onload=()=>{
     changeinputtext()
     changegridsize()
     addblocks() 
-    togglepen()
+    pressforpen()
+    
 }
 
 
@@ -26,7 +27,7 @@ cleargridsanddivs()
 changegridsize()
 addblocks()
 changecolor()
-togglepen()
+pressforpen()
 }
 
 
@@ -79,39 +80,74 @@ var smallGrids = document.querySelectorAll("#smallgrid");
 
 
 function togglepen(){
+
+
     smallGrids = document.querySelectorAll("#smallgrid");
 
     gridcontainer.onclick= function() {
         if(penstatus==0){
             for(var j = 0; j < smallGrids.length; j++){
-            smallGrids[j].onmouseenter = function() {
+            smallGrids[j].onmouseover = function() {
                 this.style.backgroundColor=`${currentcolor}`
-                penstatus=1
-            }}
+                
+            }}penstatus=1
         }
         else{
             for(var z = 0; z < smallGrids.length; z++){
-                smallGrids[z].onmouseenter = function() {
+                smallGrids[z].onmouseover = function() {
                     penstatus=0
                 }
             }
         }
 }}
 
+function pressforpen(){
 
-let gridstatus=1
+    gridcontainer.onclick= function() {}
+    for(var j = 0; j < smallGrids.length; j++){
+    smallGrids[j].onmouseover = function() {}}
+
+
+    let mousestatus=0
+    smallGrids = document.querySelectorAll("#smallgrid");
+    gridcontainer.onmousedown= function(){mousestatus=1}
+    gridcontainer.onmouseup= function(){mousestatus=0}
+    gridcontainer.onmouseleave=function(){mousestatus=0}
+    for(var j = 0; j < smallGrids.length; j++){
+        smallGrids[j].onmouseover = function() {
+            if(mousestatus===0){return}
+            else if(mousestatus===1){
+            this.style.backgroundColor=`${currentcolor}`
+            penstatus=1
+        }}
+        
+
+
+}}
+
+
+
+
+
+
+let gridstatus=0
 const gridborderb=document.getElementById("gridborder")
 
 
 function togglegrid(){
-    if(gridstatus===0){
+    if(gridstatus===1){
         for (var i = 0; i < smallGrids.length; i++) {
-            smallGrids[i].classList.remove("nogrid") 
-            gridstatus=1
+            smallGrids[i].classList.remove("dogrid") 
+            smallGrids[i].classList.add("smallbox")    
+            gridstatus=0
         }}
-    else{ for(var i = 0; i < smallGrids.length; i++){
-        smallGrids[i].classList.add("nogrid") 
-        gridstatus=0}
+    else{ 
+        for(var i = 0; i < smallGrids.length; i++){
+        smallGrids[i].classList.add("dogrid") 
+        smallGrids[i].classList.remove("smallbox") 
+
+        gridstatus=1
+    }
     }
     
 }
@@ -131,27 +167,60 @@ colorpicker.addEventListener('input',changecolor);
 function changecolor(){
     let inputcolor=document.getElementById("Color").value
     currentcolor=inputcolor
+
+    document.getElementById("Eraser").checked=false
+    document.getElementById("RandomColor").checked=false
+    gridcontainer.removeEventListener("mousemove", mousemoveListener);
 }
 
-    /*const randomcolorbutton=document.getElementById("RandomColor");
-    randomcolorbutton.addEventListener('change', function() {
-        if(this.checked){
-            gridcontainer.addEventListener("mousemove", (event) => {
-                let r = Math.random() * 256;
-                    let g = Math.random() * 256;
-                    let b = Math.random() * 256;
-                    currentcolor= `rgb(${r}, ${g}, ${b})`
-            });}
-           else{
-            alert("2")
-            gridcontainer.removeEventListener("mousemove", (event) => {
-                let r = Math.random() * 256;
-                    let g = Math.random() * 256;
-                    let b = Math.random() * 256;
-                    currentcolor= `rgb(${r}, ${g}, ${b})`
-            });
-            changecolor();
-             }})*/
+    
+let mousemoveListener = (event) => {
+    let r = Math.random() * 255;
+    let g = Math.random() * 255;
+    let b = Math.random() * 255;
+    currentcolor= `rgb(${r}, ${g}, ${b})`
+};
+
+document.getElementById("RandomColor").addEventListener('change', function() {
+    if(this.checked){
+        gridcontainer.addEventListener("mousemove", mousemoveListener);
+        document.getElementById("Eraser").checked=false
+
+    } else {
+        gridcontainer.removeEventListener("mousemove", mousemoveListener);
+        changecolor()
+    }
+})
+
+
+
+            document.getElementById("Penmode").addEventListener('change', function() {
+                if(this.checked){
+                    togglepen()
+                    }
+                   else{
+                    pressforpen()
+        
+                    }});
+                
+
+
+
+document.getElementById("Eraser").addEventListener('change',function() {
+    if(this.checked){
+        
+                currentcolor = `#acacac`
+                document.getElementById("RandomColor").checked=false
+    gridcontainer.removeEventListener("mousemove", mousemoveListener);
+        }
+       else{
+         
+                changecolor()
+
+        }});
+
+
+            
         
         
 
