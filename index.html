@@ -11,27 +11,58 @@
 <body>
 <div class="main">
     <div class="gamecontrols">
-        <input type="color" name="color" id="Color">
-        <input type="range" name="range" id="GridCount" min="4" max="64">
-        <div id="gridcounttext"></div>
+
+        <div class="colorpick">
+            <p>color input :</p>
+            <input type="color" name="color" id="Color">
+        </div>
+
+        <div>
+            <input type="range" name="range" id="GridCount" min="4" max="64" class="rangeslide">
+            <div id="gridcounttext"></div>
+        </div>
+
         <button id="clear">clear</button>
-        <button id="gridborder" onclick=togglegrid()>toggle grid borders </button>
+
+
+
+
+
+        <div>
+            <label for="gridborder">show grid</label onclick=togglegrid()>
+            <label for="gridborder" class="switch" onclick=togglegrid()>
+                <input type="checkbox" name="random color" id="gridborder" onclick=togglegrid()>
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+
+        <div>
+            <label for="RandomColor">rainbow</label>
+            <label for="RandomColor" class="switch">
+                <input type="checkbox" name="random color" id="RandomColor">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+
+        <div>
+            <label for="Eraser">eraser</label>
+            <label for="Eraser" class="switch">
+                <input type="checkbox" name="eraser" id="Eraser">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div>
+            <label for="Penmode">pen mode</label>
+            <label for="Penmode" class="switch">
+                <input type="checkbox" name="penmode" id="Penmode" >
+                <span class="slider round"></span>
+            </label>
+        </div>
+
         
-        <label for="RandomColor">rainbow</label>
-        <input type="checkbox" name="random color" id="RandomColor">
-        
-
-        <label for="Eraser">eraser</label>
-        <input type="checkbox" name="eraser" id="Eraser">
-
-        <label for="Penmode">pen mode</label>
-        <input type="checkbox" name="penmode" id="Penmode" >
-
-
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-          </label>
 
         <div class="footer">
             <p>created by m.j</p>

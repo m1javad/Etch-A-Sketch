@@ -20,10 +20,12 @@ body{
     display: grid;
 }
 .dogrid{
-    border-top: 1px solid rgb(0, 0, 0);
-    border-bottom: 1px solid rgb(0, 0, 0);
-    border-right: 1px solid rgb(0, 0, 0);
-    border-left: 1px solid rgb(0, 0, 0);
+    border-top: 0.1px solid rgb(0, 0, 0);
+    border-bottom: 0.1px solid rgb(0, 0, 0);
+    border-right: 0.1px solid rgb(0, 0, 0);
+    border-left: 0.1px solid rgb(0, 0, 0);
+    user-select: none;
+
 }
 .red{
     background-color: var(--defaultcolor);
@@ -46,11 +48,12 @@ body{
 .gamecontrols{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     background-color: gray;
     justify-content: center;
     align-items: center;
     width: 20vw;
+    padding-left: 50px;
     height: 100vh;
 
 
@@ -62,6 +65,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: auto;
     
     
 }
@@ -138,3 +142,98 @@ text-align: center;
 
 
 
+  #clear {
+    padding: 10px 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius:30px;
+  }
+  
+  #clear:hover {
+    color: rgb(255, 255, 255);
+    background-color:red;
+    box-shadow: 0 3px 4px rgb(119, 0, 0);
+  }
+  
+  #clear:active {
+    transform: translateY(2px);
+  }
+
+
+
+
+
+  .rangeslide {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;  
+    background: #b1b1b1;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .rangeslide::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #494949;
+    cursor: pointer;
+  }
+  .rangeslide::-webkit-slider-thumb:hover {
+
+    background: rgb(255, 255, 255);
+
+  }
+  
+
+  .rangeslide::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    background: #434343;
+    box-shadow: -150px 0 0 137.5px rgb(0, 119, 255);;
+    border-radius: 50px;
+  }
+  input[type='range'] {
+    overflow: hidden;
+  
+  }
+
+  input[type="color"] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    height: 50px;
+    padding: 0;
+    width: 50px;
+  }
+  .colorpick{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    background-color: white;
+    border-radius: 200px;
+    margin-top: 80px;
+  }
+  .colorpick>p{
+    font-weight: 900;
+  }
+  .gamecontrols>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+  }
